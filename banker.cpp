@@ -1,7 +1,12 @@
+//Cole Kaminski
+//Operating Systems
+///12/1/2023
+//Bankers Algorithm Project c++ file
+
 #include <iostream>
 #include <fstream>
-#include <bits/stdc++.h>
 #include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -11,11 +16,11 @@ const int resources = 3;
 int fillMatrix(int [processes][resources], vector<int>&);
 
 int main() {
-   	vector<int> info;	//Creates vector that takes information from file
+   	vector<int> info;	//Creates vector to read information from file
 	char ch;
 	std::ifstream input ("input.txt");
-	if(!input.is_open()) {
-		std::cout << "Unable to open file\n";	//Checks to make sure file opened
+	if(!input.is_open()) {						//Making sure the file is opened
+		std::cout << "Unable to open file\n";	
 		return 0;
 	}
 	input >> ch;
@@ -23,7 +28,7 @@ int main() {
 		if(ch == ':') {
 			input >> ch;
 			while(ch != ';') {		//Moves all the characters that are in between : and ; into the vector
-				info.push_back(static_cast<int>(ch - '0'));	//Subtracts '0' to make the conversion from character to integer correct for the numbers
+				info.push_back(static_cast<int>(ch - '0'));	//Making the conversion from character to integer correct for the numbers
 				input >> ch;
 			}
 		}
@@ -32,12 +37,16 @@ int main() {
 	std::cout << "\n";
 	input.close();		//Closes file
 
+
+
 	reverse(info.begin(),info.end());	//Reverses vector of information
 	
-	int allocated[processes][resources];	//Creates the matrices for allocated, max, needed, and an array for available
+	int allocated[processes][resources];	//Creates 3 matrices for allocated, max, needed, and an array for available
 	int max[processes][resources];
 	int needed[processes][resources];
 	int available[resources];
+
+
 
 	fillMatrix(allocated, info);	//Fills in allocated matrix
 	fillMatrix(max, info);		//Fills in max matrix
@@ -109,3 +118,5 @@ int fillMatrix(int matrix[processes][resources], vector<int>& info) {	//Function
 	}
 	return 0;
 }
+
+
