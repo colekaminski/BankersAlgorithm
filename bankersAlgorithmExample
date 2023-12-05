@@ -1,1 +1,4 @@
-Banker's Algorithm Example Output
+Banker's Algorithm Example Output:
+
+The following is the safe sequence for the processes to run:
+ P1 -> P3 -> P4 -> P0 -> P2
